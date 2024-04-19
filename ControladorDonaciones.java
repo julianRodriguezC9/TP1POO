@@ -25,12 +25,9 @@ public class ControladorDonaciones {
 		return cajasDisponibles;
 	}
 	
-	/*Problema con este tipo de implementación, según el diagrama el tema es que el método reservarCajas
-	 *Se ejecuta luego de que buscarCajas buscara exitosamente cajas y las devolviera en forma de lista
-	 *El problema surge en que el reservarCajas trabajaría con las cajas de donaciones (variable de
-	 *la instancia) y no sobre la lista de cajas que se envío en el anterior método, por lo que toca
-	 *analizar reservarCajas sobre como procederá
-	 */
+	/*Problema actual: reservarCajas tiene el drama de que 'busca cajas' de vuelta, ya que necesita saber que cajas tiene que 'eliminar'
+ 	*del sistema de cajas con las donaciones de cajas que tenemos.
+ 	*/
 	
 	public void reservarCajas(int cantidad, LocalDate fecha, String ubicacion) {
 		//Sin probar

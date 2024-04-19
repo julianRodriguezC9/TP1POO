@@ -25,7 +25,7 @@ public class ControladorDonaciones {
 		return cajasDisponibles;
 	}
 	
-	/*Problema actual: reservarCajas tiene el drama de que 'busca cajas' de vuelta, ya que necesita saber que cajas tiene que 'eliminar'
+	/*Problema actual: reservarCajas tiene el drama de que 'busca' cajas de vuelta, ya que necesita saber que cajas tiene que 'eliminar'
  	*del sistema de cajas con las donaciones de cajas que tenemos.
  	*/
 	

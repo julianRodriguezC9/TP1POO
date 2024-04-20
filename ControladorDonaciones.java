@@ -45,6 +45,9 @@ public class ControladorDonaciones {
 				cajasReservadas += donacion.obtenerCantidad();
 				donacion.actualizarCantidad(0);
 			}
+			if(donacion.obtenerCantidad() == 0) {
+				donaciones.remove(donacion);
+			}
 		}
 		System.out.println("Reserva exitosa. Cajas reservadas: " + cajasReservadas);
 	}

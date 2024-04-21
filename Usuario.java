@@ -8,4 +8,12 @@ public class Usuario {
 		this.id = id;
 		this.nombre = nombre;
 	}
+
+    public void donarCajas(int cantidad, LocalDate fecha, String ubicacion, ControladorDonaciones controlador) {
+        controlador.donarCajas(cantidad, fecha, ubicacion, this.id);
+    }
+
+    public List<DonacionesUsuario> buscarCajas(int cantidad, LocalDate fecha, String ubicacion, ControladorDonaciones controlador) {
+        return controlador.buscarCajas(cantidad, fecha, ubicacion);
+    }
 }

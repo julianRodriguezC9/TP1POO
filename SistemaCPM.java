@@ -11,4 +11,7 @@ public class SistemaCPM {
 	public List<DonacionesUsuario> realizarBusqueda(Usuario usuario, int cantidad, LocalDate fecha, String ubicacion){
 		return usuario.buscarCajas(cantidad, fecha, ubicacion, controladorDonaciones);
 	}
+
+	/*TODO: Implementar posibles métodos que permitirían que desde el sistema se hagan acciones básicas para el proceso de entrega
+         y recibo de cajas*/
 }

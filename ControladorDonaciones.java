@@ -15,7 +15,7 @@ public class ControladorDonaciones {
 	    Iterator<DonacionesUsuario> iterator = donacionesEnUbicacion.iterator();
 	    while (iterator.hasNext() && cajasEncontradas < cantidad) {
 	        DonacionesUsuario donacion = iterator.next();
-	        if (donacion.obtenerFechaDisponibilidad().isAfter(fecha)) {
+	        if (donacion.obtenerFechaDisponibilidad().isBefore(fecha)) {
 	            cajasDisponibles.add(donacion);
 	            cajasEncontradas += donacion.obtenerCantidad();
 	        }

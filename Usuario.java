@@ -23,4 +23,7 @@ public class Usuario {
     public List<DonacionesUsuario> buscarCajas(int cantidad, LocalDate fecha, String ubicacion, ControladorDonaciones controlador) {
         return controlador.buscarCajas(cantidad, fecha, ubicacion);
     }
+	public int obtenerId() {
+		return this.id;
+	}
 }

@@ -40,12 +40,4 @@ public class DonacionesUsuario {
 		return this.ubicacion;
 	}
 	
-    // Método para obtener la cantidad de cajas disponibles en la donación.
-	public int obtenerCantidadCajasReservadas(int cantidad) {
-	    if (this.cantidad >= cantidad) {
-	        return cantidad;
-	    } else {
-	        return this.cantidad;
-	    }
-	}
 }

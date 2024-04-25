@@ -79,4 +79,5 @@ public class SistemaCPM {
 	        System.out.println("Prueba fallida: La donación de Charles Leclerc tiene " + (donacionCharles != null ? donacionCharles.obtenerCantidad() : "N/A") + " cajas.");
 	    }
 	}
+//Linea 65, en TestUsuariosYDonaciones: elenRipley (USUARIO) no entiende el metodo reservarCajas
 }

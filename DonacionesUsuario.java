@@ -39,5 +39,7 @@ public class DonacionesUsuario {
 	public String obtenerUbicacion() {
 		return this.ubicacion;
 	}
-	
+	public int obtenerId() {
+		return this.id;
+	}
 }

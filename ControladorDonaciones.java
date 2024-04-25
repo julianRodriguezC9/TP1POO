@@ -23,7 +23,7 @@ public class ControladorDonaciones {
 	    
 	    if (cajasEncontradas < cantidad) {
 	        System.out.println("No se encontraron suficientes cajas. Cajas encontradas: " + cajasEncontradas);
-	        cajasDisponibles = null;
+	        donacionesDisponibles = null;
 	    }
 	    
 	    return donacionesDisponibles;

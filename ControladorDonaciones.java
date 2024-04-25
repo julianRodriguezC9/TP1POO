@@ -37,13 +37,19 @@ public class ControladorDonaciones {
 	        return;
 	    }
 	    int cajasReservadas = 0;
+	    // Recorrer cada donación en la lista de cajas para reservar.
 	    for(DonacionesUsuario donacion : cajasParaReservar) {
-	        int cajasAReservar = donacion.obtenerCantidadCajasReservadas(cantidad - cajasReservadas);
-	        cajasReservadas += cajasAReservar;
-	        donacion.actualizarCantidad(donacion.obtenerCantidad() - cajasAReservar);
-	        if(donacion.obtenerCantidad() == 0) {
+	        // Calcular cuántas cajas se van a reservar de esta donación.
+	        int cajasAReservar = Math.min(donacion.obtenerCantidad(), cantidad - cajasReservadas);
+	        // Si la donación tiene más cajas de las que se van a reservar, actualizar la cantidad de cajas disponibles en la donación.
+	        if (cajasAReservar < donacion.obtenerCantidad()) {
+	            donacion.actualizarCantidad(donacion.obtenerCantidad() - cajasAReservar);
+	        } else {
+	            // Si la donación tiene la cantidad exacta de cajas que se van a reservar o menos, eliminar la donación de la lista de donaciones.
 	            donaciones.remove(donacion);
 	        }
+	        // Actualizar el total de cajas reservadas.
+	        cajasReservadas += cajasAReservar;
 	    }
 	    System.out.println("Reserva exitosa. Cajas reservadas: " + cajasReservadas);
 	}

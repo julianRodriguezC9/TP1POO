@@ -8,7 +8,7 @@ public class ControladorDonaciones {
 	
 	// Método para buscar cajas disponibles para una mudanza en una ubicación específica y en una fecha específica.
 	public List<DonacionesUsuario> buscarCajas(int cantidad, LocalDate fecha, String ubicacion) {
-	    List<DonacionesUsuario> cajasDisponibles = new ArrayList<>();
+	    List<DonacionesUsuario> donacionesDisponibles = new ArrayList<>();
 	    List<DonacionesUsuario> donacionesEnUbicacion = buscarDonacionesPorUbicacion(ubicacion);
 	    int cajasEncontradas = 0;
 	    
@@ -16,7 +16,7 @@ public class ControladorDonaciones {
 	    while (iterator.hasNext() && cajasEncontradas < cantidad) {
 	        DonacionesUsuario donacion = iterator.next();
 	        if (donacion.obtenerFechaDisponibilidad().isBefore(fecha)) {
-	            cajasDisponibles.add(donacion);
+	            donacionesDisponibles.add(donacion);
 	            cajasEncontradas += donacion.obtenerCantidad();
 	        }
 	    }
@@ -26,7 +26,7 @@ public class ControladorDonaciones {
 	        cajasDisponibles = null;
 	    }
 	    
-	    return cajasDisponibles;
+	    return donacionesDisponibles;
 	}
 
 	// Método para reservar una cantidad específica de cajas para una mudanza en una ubicación específica y en una fecha específica.

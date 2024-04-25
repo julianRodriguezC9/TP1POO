@@ -7,9 +7,9 @@ public class ControladorRegistro {
 	List<Usuario> usuariosRegistrados = new ArrayList<>(); // Lista de todos los usuarios registrados.
 
 	 // Método para enviar los datos de registro de un nuevo usuario.
-	public void enviarDatosRegistro(String nombre, String ubicacion) {
+	public void enviarDatosRegistro(String nombre) {
 		if(validarDatosRegistro(nombre)) {
-			crearUsuario(nombre, ubicacion);
+			crearUsuario(nombre);
 			mostrarMensajeExito();
 		}else {
 			mostrarMensajeError();
@@ -25,7 +25,7 @@ public class ControladorRegistro {
 	}
 
 	// Método para crear un nuevo usuario.
-	public void crearUsuario(String nombre, String ubicacion) {
+	public void crearUsuario(String nombre) {
 		Usuario nuevoUsuario = new Usuario(nombre);
 		usuariosRegistrados.add(nuevoUsuario);
 	}

@@ -31,12 +31,12 @@ public class ControladorRegistro {
 	}
 	
 	// Método para mostrar un mensaje de éxito después de un registro exitoso.
-	public void mostrarMensajeExito() {
+	private void mostrarMensajeExito() {
 		System.out.println("Registro exitoso.");
 	}
 	
 	// Método para mostrar un mensaje de error después de un registro fallido.
-	public void mostrarMensajeError() {
+	private void mostrarMensajeError() {
 		System.out.println("Error en el registro. Por favor, verifica los datos ingresados");
 	}
 }

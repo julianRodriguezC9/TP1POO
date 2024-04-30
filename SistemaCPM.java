@@ -20,6 +20,8 @@ public class SistemaCPM {
 			testControladorDonaciones();
 			System.out.println("-----------------------------------------------");
 			testUsuariosYDonaciones();
+			System.out.println("-----------------------------------------------");
+			testControladorRegistro();
 			System.out.println("Pasaron los tests");
 		} catch (AssertionError e) {
 			System.out.println("Fallaron los tests: " + e.getMessage());
@@ -27,6 +29,7 @@ public class SistemaCPM {
 	}
 
 	public static void testControladorDonaciones() throws Exception {
+		System.out.println("Test del controlador de donaciones");
 		ControladorDonaciones.donaciones = new ArrayList<>();
 		LocalDate now = LocalDate.now();
 		LocalDate dayAfter = now.plusDays(1);
@@ -46,8 +49,7 @@ public class SistemaCPM {
 	}
 
 	public static void testUsuariosYDonaciones() throws Exception {
-	    // Crear el sistema.
-	    SistemaCPM sistema = new SistemaCPM(); //No usado
+	    System.out.println("Test de los usuarios y donaciones");
 	    // Crear a Sarah Connor y hacer que done 10 cajas.
 	    Usuario sarahConnor = new Usuario("Sarah Connor");
 	    sarahConnor.donarCajas(10, LocalDate.now(), "Almagro");
@@ -76,5 +78,22 @@ public class SistemaCPM {
 	    } else {
 	        System.out.println("Prueba fallida: La donación de Charles Leclerc tiene " + (donacionCharles != null ? donacionCharles.obtenerCantidad() : "N/A") + " cajas.");
 	    }
+	}
+
+	public static void testControladorRegistro() {
+	    System.out.println("Test del controlador de registro de usuarios");	
+	    // Prueba de registro exitoso
+	    ControladorRegistro.enviarDatosRegistro("Sarah Connor");
+	    assertion(ControladorRegistro.usuariosRegistrados.size() == 1, "Falló la prueba de registro exitoso");
+
+	    // Prueba de registro con nombre vacío (debe mostrar un mensaje de error)
+	    ControladorRegistro.enviarDatosRegistro("");
+	    assertion(ControladorRegistro.usuariosRegistrados.size() == 1, "Falló la prueba de registro con nombre vacío");
+
+	    // Prueba de registro con otro nombre
+	    ControladorRegistro.enviarDatosRegistro("Charles Leclerc");
+	    assertion(ControladorRegistro.usuariosRegistrados.size() == 2, "Falló la prueba de registro con el mismo nombre");
+
+	    System.out.println("Pasaron los tests de ControladorRegistro");
 	}
 }

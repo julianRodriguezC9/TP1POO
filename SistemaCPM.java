@@ -92,7 +92,7 @@ public class SistemaCPM {
 
 	    // Prueba de registro con otro nombre
 	    ControladorRegistro.enviarDatosRegistro("Charles Leclerc");
-	    assertion(ControladorRegistro.usuariosRegistrados.size() == 2, "Falló la prueba de registro con el mismo nombre");
+	    assertion(ControladorRegistro.usuariosRegistrados.size() == 2, "Falló la prueba de registro con distinto nombre");
 
 	    System.out.println("Pasaron los tests de ControladorRegistro");
 	}

@@ -6,10 +6,6 @@ import java.time.*;
 public class SistemaCPM {
 
 	
-	// Método para realizar una búsqueda de cajas disponibles para una mudanza.
-	public List<DonacionesUsuario> realizarBusqueda(Usuario usuario, int cantidad, LocalDate fecha, String ubicacion){
-		return usuario.buscarCajas(cantidad, fecha, ubicacion);
-	}
 
 	/*TODO: Implementar posibles métodos que permitirían que desde el sistema se hagan acciones básicas para el proceso de entrega
          y recibo de cajas*/

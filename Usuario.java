@@ -19,16 +19,13 @@ public class Usuario {
         ControladorDonaciones.agregarDonacion(cantidad, fecha, ubicacion, this.id);
     }
 
-    // Método para buscar una cantidad específica de cajas para una mudanza.
-    public List<DonacionesUsuario> buscarCajas(int cantidad, LocalDate fecha, String ubicacion) {
-        return ControladorDonaciones.buscarCajas(cantidad, fecha, ubicacion);
-    }
 	public int obtenerId() {
 		return this.id;
 	}
 
-	public void reservarCajas(int i, LocalDate plusDays, String string) {
-		ControladorDonaciones.reservarCajas(i, plusDays, string);
+	// Método para reservar una cantidad de cajas en base a una fecha y una ubicacion
+	public void reservarCajas(int cantidad, LocalDate plusDays, String ubicacion) {
+		ControladorDonaciones.reservarCajas(cantidad, plusDays, ubicacion);
 		
 	}
 }

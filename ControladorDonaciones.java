@@ -21,9 +21,9 @@ public class ControladorDonaciones {
 	        }
 	    }
 	    
+	    //ESTE IF SE PODRIA SACAR, YA QUE LA UNICA FUNCION QUE CUMPLE ES MOSTRAR MENSAJE
 	    if (cajasEncontradas < cantidad) {
 	        System.out.println("No se encontraron suficientes cajas. Cajas encontradas: " + cajasEncontradas);
-	        donacionesDisponibles = null;
 	    }
 	    
 	    return donacionesDisponibles;
@@ -32,7 +32,7 @@ public class ControladorDonaciones {
 	// Método para reservar una cantidad específica de cajas para una mudanza en una ubicación específica y en una fecha específica.
 	public static void reservarCajas(int cantidad, LocalDate fecha, String ubicacion) {
 	    List<DonacionesUsuario> cajasParaReservar = buscarCajas(cantidad, fecha, ubicacion);
-	    if(cajasParaReservar == null) {
+	    if(!hayCajasSuficientesParaReservar(cajasParaReservar,cantidad)) {
 	        System.out.println("No se pudo realizar la reserva. No hay suficientes cajas disponibles");
 	        return;
 	    }
@@ -71,4 +71,8 @@ public class ControladorDonaciones {
 		}
 		return donacionesEnUbicacion;
 	}
+	public static boolean hayCajasSuficientesParaReservar(List<DonacionesUsuario> donacionesBuscadas, int cantidadParaReservar) {
+		return donacionesBuscadas.stream().mapToInt(DonacionesUsuario :: obtenerCantidad).sum() >= cantidadParaReservar;
+	}
+
 }

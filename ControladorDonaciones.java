@@ -23,7 +23,7 @@ public class ControladorDonaciones {
 	    
 	    //ESTE IF SE PODRIA SACAR, YA QUE LA UNICA FUNCION QUE CUMPLE ES MOSTRAR MENSAJE
 	    if (cajasEncontradas < cantidad) {
-	        System.out.println("No se encontraron suficientes cajas. Cajas encontradas: " + cajasEncontradas);
+	        PantallaDeTexto.mostrarTextoFallo("No se encontraron suficientes cajas. Cajas encontradas: " + cajasEncontradas);
 	    }
 	    
 	    return donacionesDisponibles;
@@ -33,7 +33,7 @@ public class ControladorDonaciones {
 	public static void reservarCajas(int cantidad, LocalDate fecha, String ubicacion) {
 	    List<DonacionesUsuario> cajasParaReservar = buscarCajas(cantidad, fecha, ubicacion);
 	    if(!hayCajasSuficientesParaReservar(cajasParaReservar,cantidad)) {
-	        System.out.println("No se pudo realizar la reserva. No hay suficientes cajas disponibles");
+	        PantallaDeTexto.mostrarTextoFallo("No se pudo realizar la reserva. No hay suficientes cajas disponibles");
 	        return;
 	    }
 	    int cajasReservadas = 0;
@@ -51,14 +51,14 @@ public class ControladorDonaciones {
 	        // Actualizar el total de cajas reservadas.
 	        cajasReservadas += cajasAReservar;
 	    }
-	    System.out.println("Reserva exitosa. Cajas reservadas: " + cajasReservadas);
+	    PantallaDeTexto.mostrarTextoExito("Reserva exitosa. Cajas reservadas: " + cajasReservadas);
 	}
 	
 	// Método para donar una cantidad específica de cajas para una mudanza en una ubicación específica y en una fecha específica.
 	public static void agregarDonacion(int cantidad, LocalDate fecha, String ubicacion, int idUsuario) {		
 		DonacionesUsuario nuevaDonacion = new DonacionesUsuario(cantidad, ubicacion, fecha, idUsuario);
 		donaciones.add(nuevaDonacion);
-		System.out.println("Donacion exitosa. Cantidad de cajas donadas: " + cantidad);
+		PantallaDeTexto.mostrarTextoExito("Donacion exitosa. Cantidad de cajas donadas: " + cantidad);
 	}
 	
 	// Método para buscar todas las donaciones de cajas disponibles en una ubicación específica.
@@ -71,7 +71,7 @@ public class ControladorDonaciones {
 		}
 		return donacionesEnUbicacion;
 	}
-	public static boolean hayCajasSuficientesParaReservar(List<DonacionesUsuario> donacionesBuscadas, int cantidadParaReservar) {
+	private static boolean hayCajasSuficientesParaReservar(List<DonacionesUsuario> donacionesBuscadas, int cantidadParaReservar) {
 		return donacionesBuscadas.stream().mapToInt(DonacionesUsuario :: obtenerCantidad).sum() >= cantidadParaReservar;
 	}
 

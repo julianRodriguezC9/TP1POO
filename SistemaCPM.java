@@ -77,7 +77,12 @@ public class SistemaCPM {
 
 	public static void testControladorRegistro() {
 	    System.out.println("Test del controlador de registro de usuarios");	
+	    //Se crea la instancia del cotnrolador de registro (debido a que le quitaron a que ya no es estático)
+	    //Aunque la instancia no sigue las convenciones de empezar con letra minúscula	
+	    ControladorRegistro ControladorRegistro = new ControladorRegistro();
+
 	    // Prueba de registro exitoso
+		
 	    ControladorRegistro.enviarDatosRegistro("Sarah Connor");
 	    assertion(ControladorRegistro.usuariosRegistrados.size() == 1, "Falló la prueba de registro exitoso");
 

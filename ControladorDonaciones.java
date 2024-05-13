@@ -4,9 +4,8 @@ import java.time.*;
 import java.util.*;
 
 public class ControladorDonaciones {
-	static List<DonacionesUsuario> donaciones; // Lista de todas las donaciones de cajas disponibles.
+	static List<DonacionesUsuario> donaciones;
 	
-	// Método para buscar cajas disponibles para una mudanza en una ubicación específica y en una fecha específica.
 	public static List<DonacionesUsuario> buscarCajas(int cantidad, LocalDate fecha, String ubicacion) {
 	    List<DonacionesUsuario> donacionesDisponibles = new ArrayList<>();
 	    List<DonacionesUsuario> donacionesEnUbicacion = buscarDonacionesPorUbicacion(ubicacion);
@@ -29,7 +28,6 @@ public class ControladorDonaciones {
 	    return donacionesDisponibles;
 	}
 
-	// Método para reservar una cantidad específica de cajas para una mudanza en una ubicación específica y en una fecha específica.
 	public static void reservarCajas(int cantidad, LocalDate fecha, String ubicacion) {
 	    List<DonacionesUsuario> cajasParaReservar = buscarCajas(cantidad, fecha, ubicacion);
 	    if(!hayCajasSuficientesParaReservar(cajasParaReservar,cantidad)) {
@@ -37,31 +35,24 @@ public class ControladorDonaciones {
 	        return;
 	    }
 	    int cajasReservadas = 0;
-	    // Recorrer cada donación en la lista de cajas para reservar.
 	    for(DonacionesUsuario donacion : cajasParaReservar) {
-	        // Calcular cuántas cajas se van a reservar de esta donación.
 	        int cajasAReservar = Math.min(donacion.obtenerCantidad(), cantidad - cajasReservadas);
-	        // Si la donación tiene más cajas de las que se van a reservar, actualizar la cantidad de cajas disponibles en la donación.
 	        if (cajasAReservar < donacion.obtenerCantidad()) {
 	            donacion.actualizarCantidad(donacion.obtenerCantidad() - cajasAReservar);
 	        } else {
-	            // Si la donación tiene la cantidad exacta de cajas que se van a reservar o menos, eliminar la donación de la lista de donaciones.
 	            donaciones.remove(donacion);
 	        }
-	        // Actualizar el total de cajas reservadas.
 	        cajasReservadas += cajasAReservar;
 	    }
 	    PantallaDeTexto.mostrarTextoExito("Reserva exitosa. Cajas reservadas: " + cajasReservadas);
 	}
 	
-	// Método para donar una cantidad específica de cajas para una mudanza en una ubicación específica y en una fecha específica.
-	public static void agregarDonacion(int cantidad, LocalDate fecha, String ubicacion, int idUsuario) {		
+	public static void agregarDonacion(int cantidad, LocalDate fecha, String ubicacion, int idUsuario) {
 		DonacionesUsuario nuevaDonacion = new DonacionesUsuario(cantidad, ubicacion, fecha, idUsuario);
 		donaciones.add(nuevaDonacion);
 		PantallaDeTexto.mostrarTextoExito("Donacion exitosa. Cantidad de cajas donadas: " + cantidad);
 	}
 	
-	// Método para buscar todas las donaciones de cajas disponibles en una ubicación específica.
 	public static List<DonacionesUsuario> buscarDonacionesPorUbicacion(String ubicacion){
 		List<DonacionesUsuario> donacionesEnUbicacion = new ArrayList<>();
 		for(DonacionesUsuario donacion : donaciones) {
@@ -71,8 +62,8 @@ public class ControladorDonaciones {
 		}
 		return donacionesEnUbicacion;
 	}
+
 	private static boolean hayCajasSuficientesParaReservar(List<DonacionesUsuario> donacionesBuscadas, int cantidadParaReservar) {
 		return donacionesBuscadas.stream().mapToInt(DonacionesUsuario :: obtenerCantidad).sum() >= cantidadParaReservar;
 	}
-
 }

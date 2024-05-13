@@ -1,4 +1,4 @@
-package sistemaCPM;
+package Vista;
 
 public class PantallaDeTexto {
 	public static void mostrarTextoFallo(String texto) {

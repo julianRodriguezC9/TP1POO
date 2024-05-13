@@ -7,5 +7,4 @@ public class PantallaDeTexto {
 	public static void mostrarTextoExito(String texto) {
 			System.out.println("Operacion exitosa:" + texto);
 	}
-
 }

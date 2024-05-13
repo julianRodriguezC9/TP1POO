@@ -1,4 +1,7 @@
-package sistemaCPM;
+import Controlador.ControladorDonaciones;
+import Controlador.ControladorRegistro;
+import Modelo.DonacionesUsuario;
+import Modelo.Usuario;
 
 import java.util.*;
 import java.time.*;

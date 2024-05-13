@@ -1,4 +1,4 @@
-package sistemaCPM;
+package Modelo;
 
 import java.time.*;
 
@@ -9,7 +9,7 @@ public class DonacionesUsuario {
 	int cantidad;
 	String ubicacion;
 	LocalDate fechaDisponibilidad;
-	int usuarioDonante;
+	public int usuarioDonante;
 	
 	public DonacionesUsuario(int cantidad, String ubicacion, LocalDate fechaDisponibilidad, int usuarioDonante){
 		this.id = nextId++;

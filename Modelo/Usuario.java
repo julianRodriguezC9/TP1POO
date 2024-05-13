@@ -1,11 +1,13 @@
-package sistemaCPM;
+package Modelo;
+
+import Controlador.ControladorDonaciones;
 
 import java.time.*;
 
 public class Usuario {
 	private static int nextId = 1;
-	int id;
-	String nombre;
+	public int id;
+	public String nombre;
  
 	public Usuario(String nombre) {
 		this.id = nextId++;

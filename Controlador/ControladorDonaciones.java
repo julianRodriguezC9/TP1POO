@@ -1,10 +1,13 @@
-package sistemaCPM;
+package Controlador;
+
+import Modelo.DonacionesUsuario;
+import Vista.PantallaDeTexto;
 
 import java.time.*;
 import java.util.*;
 
 public class ControladorDonaciones {
-	static List<DonacionesUsuario> donaciones;
+	public static List<DonacionesUsuario> donaciones;
 	
 	public static List<DonacionesUsuario> buscarCajas(int cantidad, LocalDate fecha, String ubicacion) {
 	    List<DonacionesUsuario> donacionesDisponibles = new ArrayList<>();

@@ -1,9 +1,12 @@
-package sistemaCPM;
+package Controlador;
+
+import Modelo.Usuario;
+import Vista.PantallaDeTexto;
 
 import java.util.*;
 
 public class ControladorRegistro {
-	List<Usuario> usuariosRegistrados = new ArrayList<>();
+	public List<Usuario> usuariosRegistrados = new ArrayList<>();
 
 	public void enviarDatosRegistro(String nombre) {
 		if(validarDatosRegistro(nombre)) {

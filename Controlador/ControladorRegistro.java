@@ -9,7 +9,7 @@ public class ControladorRegistro {
 	public List<Usuario> usuariosRegistrados = new ArrayList<>();
 
 	public void enviarDatosRegistro(String nombre) {
-		if(validarDatosRegistro(nombre)) {
+		if(datosRegistroValido(nombre)) {
 			crearUsuario(nombre);
 			PantallaDeTexto.mostrarTextoExito("Registro exitoso.");
 		}else {
@@ -17,7 +17,7 @@ public class ControladorRegistro {
 		}
 	}
 	
-	public boolean validarDatosRegistro(String nombre) {
+	public boolean datosRegistroValido(String nombre) {
 		return !nombre.isEmpty();
 	}
 
